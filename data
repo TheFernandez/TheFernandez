@@ -1,0 +1,84 @@
+import matplotlib.pyplot as plt
+
+# Data for the visualizations
+female_engaging = 13
+male_engaging = 9
+female_not_engaging = 10
+male_not_engaging = 8
+
+females_willing_rent = 16
+females_willing_roommates = 15
+females_willing_group_members = 14
+
+males_willing_rent = 12
+males_willing_roommates = 11
+males_willing_group_members = 10
+
+non_engagement_reasons = {
+    'Religious': 3,
+    'Strict Parents': 2,
+    'Personal Disinterest': 2,
+    'Societal Norms': 1
+}
+
+university_engaging = 10
+non_university_engaging = 12
+
+reasons_for_engagement = ['Confidence', 'Personal Preference', 'Beauty Enhancement']
+
+# Visualizer 1: Gender-wise Distribution of Engaging in Lifestyles
+labels = 'Female Engaging', 'Male Engaging', 'Female Not Engaging', 'Male Not Engaging'
+sizes = [female_engaging, male_engaging, female_not_engaging, male_not_engaging]
+
+plt.figure(figsize=(8, 8))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['pink', 'lightblue', 'lightcoral', 'lightskyblue'])
+plt.title('Gender-wise Distribution of Engaging in Lifestyles')
+plt.show()
+
+# Visualizer 2: Attitude Towards Renting/Choosing Roommates or Group Members
+categories = ['Willing to Rent', 'Willing Roommates', 'Willing Group Members']
+females_values = [females_willing_rent, females_willing_roommates, females_willing_group_members]
+males_values = [males_willing_rent, males_willing_roommates, males_willing_group_members]
+
+bar_width = 0.35
+index = range(len(categories))
+
+plt.figure(figsize=(10, 6))
+plt.bar(index, females_values, bar_width, label='Females', color='pink')
+plt.bar([i + bar_width for i in index], males_values, bar_width, label='Males', color='lightblue')
+
+plt.xlabel('Categories')
+plt.ylabel('Number of Participants')
+plt.title('Attitude Towards Renting/Choosing Roommates or Group Members')
+plt.xticks([i + bar_width/2 for i in index], categories)
+plt.legend()
+plt.show()
+
+# Visualizer 3: Reasons for Non-Engagement in Lifestyles
+reason_labels = list(non_engagement_reasons.keys())
+reason_values = list(non_engagement_reasons.values())
+
+plt.figure(figsize=(10, 6))
+plt.bar(reason_labels, reason_values, color=['lightcoral', 'salmon', 'indianred', 'firebrick'])
+plt.xlabel('Reasons for Non-Engagement')
+plt.ylabel('Number of Participants')
+plt.title('Reasons for Non-Engagement in Lifestyles')
+plt.show()
+
+# Visualizer 4: Comparison of University vs. Non-University Participants
+categories_university = ['University Engaging', 'Non-University Engaging']
+values_university = [university_engaging, non_university_engaging]
+
+plt.figure(figsize=(8, 6))
+plt.bar(categories_university, values_university, color=['skyblue', 'lightgreen'])
+plt.xlabel('Participant Groups')
+plt.ylabel('Number of Participants')
+plt.title('Comparison of University vs. Non-University Participants')
+plt.show()
+
+# Visualizer 5: Reasons for Engagement in Lifestyles
+plt.figure(figsize=(10, 6))
+plt.barh(reasons_for_engagement, [1]*len(reasons_for_engagement), color=['lightblue', 'lightsalmon', 'lightgreen'])
+plt.xlabel('Number of Participants')
+plt.title('Reasons for Engagement in Lifestyles')
+plt.show()
